@@ -77,7 +77,10 @@ function sum(){
 function sumContinued(){
     
     let result = operate(operator,+number1, +number2);
-    checkForInfinity(result);
+    if(checkForInfinity(result) === true){
+        console.log("checkInfinity Statement")
+        result = number1;
+    }
     let resultString = result.toString();
     if(resultString.length > 5){
         let shortenedResult = result.toFixed(5);
