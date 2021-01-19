@@ -2,6 +2,7 @@ let operator;
 let number1;
 let number2;
 let storage = [];
+let dot = 0;
 
 
 
@@ -12,7 +13,8 @@ let minusBtn = document.getElementById("minus");
 let multiplyBtn = document.getElementById("multiply");
 let clearBtn = document.getElementById("clear");
 let equalBtn = document.getElementById("equal");
-
+let dotBtn = document.getElementById("dot");
+let delBtn = document.getElementById("delete")
 
 
 
@@ -41,6 +43,7 @@ function display(e){
     storage.push(e.target.value)
     number2 = storage.join("");
     displayCalc.innerHTML = storage.join("");
+    console.log(storage)
     return +number2;
 
    
@@ -49,6 +52,7 @@ function display(e){
     storage.push(e.target.value)
     number1 = storage.join("");
     displayCalc.innerHTML = storage.join("");
+    console.log(storage)
     return +number1;
     }
 
@@ -104,6 +108,21 @@ function checkForInfinity(result){
     }
 }
 
+function countDots(e){
+    if(dot >= 1){
+        console.log(storage)
+        return
+    } 
+    display(e)
+    console.log(storage)
+    dot++
+    console.log(dot)
+}
+
+function resetDotsCount(){
+    dot = 0;
+    console.log(dot)
+}
 
 
 
@@ -114,24 +133,28 @@ document.querySelectorAll(".buttonNumber").forEach(item => {
 })
 
 plusBtn.addEventListener("click", function(){
+    resetDotsCount();
     checkIfContinuedOperations();
     storage = []
     operator = add;
 })
 
 minusBtn.addEventListener("click", function(){
+    resetDotsCount();
     checkIfContinuedOperations();
     storage = [];
     operator = sub;
 })
 
 divideBtn.addEventListener("click", function(){
+    resetDotsCount();
     checkIfContinuedOperations();
     storage = [];
     operator = divide;
 })
 
 multiplyBtn.addEventListener("click", function(){
+    resetDotsCount();
     checkIfContinuedOperations();
     storage = [];
     operator = multiply;
@@ -145,12 +168,15 @@ clearBtn.addEventListener("click", function(e){
     displayCalc.innerHTML = storage;
     number1 = null;
     number2 = null;
+    dot = null;
     console.log(number1)
     console.log(number2)
     console.log(operator)
 })
 
 equalBtn.addEventListener("click", sum)
+
+dotBtn.addEventListener("click", countDots)
 
 
 
