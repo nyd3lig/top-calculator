@@ -53,7 +53,12 @@ function display(e){
     }
 
 function sum(){
+    
     let result = operate(operator, +number1, +number2);
+    if(checkForInfinity(result) === true){
+        console.log("checkInfinity Statement")
+        result = number1;
+    }
     let resultString = result.toString();
     if(resultString.length > 5){
         let shortenedResult = result.toFixed(5);
@@ -70,7 +75,9 @@ function sum(){
 }
 
 function sumContinued(){
+    
     let result = operate(operator,+number1, +number2);
+    checkForInfinity(result);
     let resultString = result.toString();
     if(resultString.length > 5){
         let shortenedResult = result.toFixed(5);
@@ -88,11 +95,10 @@ function checkIfContinuedOperations(){
     }
 }
 
-function checkLengthOfResult(result){
-
-    
-    
-    
+function checkForInfinity(result){
+    if(result === Infinity){
+        return true;
+    }
 }
 
 
