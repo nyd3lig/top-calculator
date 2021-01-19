@@ -41,10 +41,9 @@ function display(e){
     storage.push(e.target.value)
     number2 = storage.join("");
     displayCalc.innerHTML = storage.join("");
-    console.log("this is the display if statement and number1: " + typeof number1 + "and number2: " + typeof number2)
     return +number2;
 
-    console.log("this is the display if statement and number1: " + number1 + " and number2: " + number2)
+   
    
     } 
     storage.push(e.target.value)
@@ -55,6 +54,14 @@ function display(e){
 
 function sum(){
     let result = operate(operator, +number1, +number2);
+    let resultString = result.toString();
+    if(resultString.length > 5){
+        let shortenedResult = result.toFixed(5);
+        checkedResult = shortenedResult
+        result = checkedResult;
+        }
+  
+    
     displayCalc.innerHTML = result;
     number1 = result.toString();
     number2 = null;
@@ -64,14 +71,13 @@ function sum(){
 
 function sumContinued(){
     let result = operate(operator,+number1, +number2);
-    let resultString = result.toString;
-    console.log(resultString.length)
-    if (resultString.length > 9){
-        console.log("this is a long ass number")
-        result = result.toFixed(6);
-    }
+    let resultString = result.toString();
+    if(resultString.length > 5){
+        let shortenedResult = result.toFixed(5);
+        checkedResult = shortenedResult
+        result = checkedResult;
+        }
     displayCalc.innerHTML = result;
-    
     number1 = result.toString();
     return result
 }
@@ -80,6 +86,13 @@ function checkIfContinuedOperations(){
     if(typeof number1 === "string" && typeof number2 === "string"){
         sumContinued();
     }
+}
+
+function checkLengthOfResult(result){
+
+    
+    
+    
 }
 
 
