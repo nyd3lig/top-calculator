@@ -4,32 +4,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <div id="calc-body">
-        <textarea id="display">Dummy text</textarea>
+        <textarea id="display" disabled="yes"></textarea>
         <div id="buttons-container">
-            <button id="clear" class="button">C</button>
-            <button id="delete"><</button>
-            <button value="1" id="1" class="buttonNumber">1</button>
-            <button value="2" id="2" class="buttonNumber">2</button>
-            <button value="3" id="3" class="buttonNumber">3</button>
-            <button value="+"id="plus" class="buttonOperator">+</button>
-            <button value="4" id="4" class="buttonNumber">4</button>
-            <button value="5" id="5" class="buttonNumber">5</button>
-            <button value="6" id="6" class="buttonNumber">6</button>
-            <button value="minus" id="minus" class="buttonOperator">-</button>
-            <button value="7" id="7" class="buttonNumber">7</button>
-            <button value="8" id="8" class="buttonNumber">8</button>
-            <button value="9" id="9" class="buttonNumber">9</button>
-            <button value="*" id="multiply" class="buttonOperator">*</button>
-            <button value="0" id="0" class="buttonNumber">0</button>
-            <button value="." id="dot" >.</button>
-            <button value="=" id="equal" class="button">=</button>
-            <button value="/" id="divide" class="buttonOperator">/</button>
+            <button id="clear" class="button buttonStyle">AC</button>
+            <button id="remainder" class="buttonOperator buttonStyle">%</button>
+            <button value="1" id="1" class="buttonStyle buttonNumber">1</button>
+            <button value="2" id="2" class="buttonStyle buttonNumber">2</button>
+            <button value="3" id="3" class="buttonStyle buttonNumber">3</button>
+            <button value="+"id="plus" class="buttonOperator buttonStyle">+</button>
+            <button value="4" id="4" class="buttonStyle buttonNumber">4</button>
+            <button value="5" id="5" class="buttonStyle buttonNumber">5</button>
+            <button value="6" id="6" class="buttonStyle buttonNumber">6</button>
+            <button value="minus" id="minus" class="buttonOperator buttonStyle">-</button>
+            <button value="7" id="7" class="buttonStyle buttonNumber">7</button>
+            <button value="8" id="8" class="buttonStyle buttonNumber">8</button>
+            <button value="9" id="9" class="buttonStyle buttonNumber">9</button>
+            <button value="*" id="multiply" class="buttonOperator buttonStyle"><span>*</span></button>
+            <button value="0" id="0" class="buttonStyle buttonNumber">0</button>
+            <button value="." id="dot" class="buttonStyle">.</button>
+            <button value="=" id="equal" class="button buttonStyle">=</button>
+            <button value="/" id="divide" class="buttonOperator buttonStyle">/</button>
            
         </div>
     </div>
+    
 </body>
 <script src="script.js"></script>
 </html>
