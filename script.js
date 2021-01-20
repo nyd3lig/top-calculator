@@ -3,7 +3,7 @@ let number1;
 let number2;
 let storage = [];
 let dot = 0;
-
+console.log(number1)
 
 
 let displayCalc = document.getElementById("display");
@@ -42,9 +42,19 @@ function remainder (num1, num2){
 function operate(operator, num1, num2){
     return operator(num1, num2);
 }
-
+function clear(){
+    operator = undefined;
+    storage = [];
+    displayCalc.innerHTML = 0;
+    number1 = undefined;
+    number2 = undefined;
+    dot = undefined;
+}
 function display(e){
-    console.log("clicked")
+    console.log(number1)
+    console.log(number2)
+    console.log(operator)
+    console.log(storage)
     if(operator === add || operator === sub || operator === divide || operator === multiply || operator === remainder || number1 === "string") {
     storage.push(e.target.value)
     number2 = storage.join("");
@@ -131,6 +141,9 @@ function checkForInfinity(result){
     }
 }
 
+
+
+
 function countDots(e){
     if(dot >= 1){
         
@@ -166,51 +179,68 @@ document.querySelectorAll(".buttonNumber").forEach(item => {
 })
 
 plusBtn.addEventListener("click", function(){
-    resetDotsCount();
-    checkIfContinuedOperations();
-    storage = []
-    operator = add;
+    if(number1 === undefined){
+        clear();
+    }else {
+        resetDotsCount();
+        checkIfContinuedOperations();
+        storage = []
+        operator = add;
+    }
+   
 })
 
 minusBtn.addEventListener("click", function(){
-    resetDotsCount();
-    checkIfContinuedOperations();
-    storage = [];
-    operator = sub;
+    if(number1 === undefined){
+        clear();
+    }else {
+        resetDotsCount();
+        checkIfContinuedOperations();
+        storage = [];
+        operator = sub;
+    }
+    
 })
 
 divideBtn.addEventListener("click", function(){
-    resetDotsCount();
-    checkIfContinuedOperations();
-    storage = [];
-    operator = divide;
+    if(number1 === undefined){
+        clear();
+    }else {
+        resetDotsCount();
+        checkIfContinuedOperations();
+        storage = [];
+        operator = divide;
+    }
+    
 })
 
 multiplyBtn.addEventListener("click", function(){
-    resetDotsCount();
-    checkIfContinuedOperations();
-    storage = [];
-    operator = multiply;
+    if(number1 === undefined){
+        clear();
+    }else {
+        resetDotsCount();
+        checkIfContinuedOperations();
+        storage = [];
+        operator = multiply;
+    }
+   
 })
 
 remainderBtn.addEventListener("click", function(){
-    resetDotsCount();
-    checkIfContinuedOperations();
-    storage = [];
-    operator = remainder;
+    if(number1 === undefined){
+        clear();
+    }else {
+        resetDotsCount();
+        checkIfContinuedOperations();
+        storage = [];
+        operator = remainder;
+    }
+   
 })
 
 
 
-clearBtn.addEventListener("click", function(e){
-    operator = null;
-    storage = [];
-    displayCalc.innerHTML = storage;
-    number1 = null;
-    number2 = null;
-    dot = null;
-  
-})
+clearBtn.addEventListener("click", clear)
 
 // delBtn.addEventListener("click", undoNumber);
 

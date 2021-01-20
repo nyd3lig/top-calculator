@@ -50,7 +50,19 @@ textarea{
     width: 87px;
     height: 87px;
     font-size: 45px;
+    outline:none;
 
+}
+
+.buttonStyle:active{
+    
+        background-color: #C4C4C4;
+        box-shadow: 0 2px #666;
+        transform: translateY(1px);
+      
+}
+.buttonStyle:hover{
+    background-color: #666;
 }
 #clear {
     height: 87px;
