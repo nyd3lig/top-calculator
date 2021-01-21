@@ -14,8 +14,8 @@ p {
 	left: 0;
     right: 0;
     margin: auto;
-    width: 342px;
-    height: 540px;
+    width: 284px;
+    height: 470px;
     background-color: #0A0A0A;
     border-radius: 10px;
     padding: 1rem;
@@ -24,9 +24,9 @@ p {
 textarea{
     font-family: 'Roboto', sans-serif;
     display: block;
-    width: 341px;
+    width: 284px;
     height: 95px;
-    font-size: 65px;
+    font-size: 60px;
     background-color: #3B3B3B;
     color: #f5f5f5;
     border-style:none;
@@ -47,9 +47,9 @@ textarea{
     background-color: #3B3B3B;
     color: #f5f5f5;
     border: none;
-    width: 80px;
-    height: 80px;
-    font-size: 45px;
+    width: 65px;
+    height: 65px;
+    font-size: 35px;
     outline:none;
 
 }
@@ -65,8 +65,8 @@ textarea{
     background-color: #666;
 }
 #clear {
-    height: 80px;
-    width: 252px;
+    height: 65px;
+    width: 209px;
     text-align: left;
     
 }
