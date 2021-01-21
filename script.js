@@ -3,6 +3,7 @@ let number1;
 let number2;
 let storage = [];
 let dot = 0;
+let clickCount = 0;
 console.log("this is number1: " + number1);
 console.log("this is number2: " + number2);
 console.log("this is operator: " + operator);
@@ -47,15 +48,19 @@ function operate(operator, num1, num2) {
 }
 
 function clear() {
+    
     operator = undefined;
     storage = [];
     displayCalc.innerHTML = 0;
     number1 = undefined;
     number2 = undefined;
     dot = undefined;
+    clickCount = 0;
+    numberResize();
 }
 
 function display(e) {
+    clickCount++;
     console.log("this is number1: " + number1);
     console.log("this is number2: " + number2);
     console.log("this is operator: " + operator);
@@ -71,6 +76,7 @@ function display(e) {
     number1 = storage.join(""); +
     number1
     displayCalc.innerHTML = number1;
+    numberResize();
     return +number1;
 }
 
@@ -178,6 +184,7 @@ function minusFunc() {
     if (number1 === undefined) {
         clear();
     } else {
+
         resetDotsCount();
         checkIfContinuedOperations();
         storage = [];
@@ -229,6 +236,29 @@ function remainderFunc() {
     }
 }
 
+function numberResize(){  
+    if(clickCount >= 0 && clickCount <= 8)
+    displayCalc.style.fontSize = "60px";
+    displayCalc.style.paddingTop = "28px";
+    console.log("this is the count of clickCount: " + clickCount)
+    if(clickCount===9){
+        console.log("9")
+        displayCalc.style.fontSize = "54px";
+        displayCalc.style.paddingTop = "34px"
+    } else if (clickCount===10){
+        console.log("10")
+        displayCalc.style.fontSize = "48px";
+        displayCalc.style.paddingTop = "40px"
+    } else if (clickCount === 11){
+        console.log("11")
+        displayCalc.style.fontSize = "44px";
+        displayCalc.style.paddingTop = "44px"
+    } else if (clickCount >= 12 && clickCount <= 24){
+        displayCalc.style.fontSize = "24px";
+        displayCalc.style.paddingTop = "64px"
+    }
+}
+
 
 
 document.querySelectorAll(".buttonNumber").forEach(item => {
@@ -255,3 +285,5 @@ clearBtn.addEventListener("click", clear)
 equalBtn.addEventListener("click", sum)
 
 dotBtn.addEventListener("click", countDots)
+
+numberResize();
