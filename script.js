@@ -3,7 +3,10 @@ let number1;
 let number2;
 let storage = [];
 let dot = 0;
-console.log(number1)
+console.log("this is number1: " + number1);
+console.log("this is number2: " + number2);
+console.log("this is operator: " + operator);
+console.log("this is storage: " + storage);
 
 
 let displayCalc = document.getElementById("display");
@@ -51,19 +54,17 @@ function clear(){
     dot = undefined;
 }
 function display(e){
-    console.log(number1)
-    console.log(number2)
-    console.log(operator)
-    console.log(storage)
+    console.log("this is number1: " + number1);
+    console.log("this is number2: " + number2);
+    console.log("this is operator: " + operator);
+    console.log("this is storage: " + storage);
     if(operator === add || operator === sub || operator === divide || operator === multiply || operator === remainder || number1 === "string") {
     storage.push(e.target.value)
     number2 = storage.join("");
     displayCalc.innerHTML = storage.join("");
     return +number2;
-
-   
-   
     } 
+    
     storage.push(e.target.value)
     number1 = storage.join("");
     +number1
@@ -73,6 +74,11 @@ function display(e){
     
 
 function sum(){
+    console.log("EQUALS CLICKED")
+    console.log("this is number1: " + number1);
+    console.log("this is number2: " + number2);
+    console.log("this is operator: " + operator);
+    console.log("this is storage: " + storage);
     
     // let result = operate(operator, +number1, +number2);
     // if(checkForInfinity(result) === true){
@@ -89,10 +95,13 @@ function sum(){
     // displayCalc.innerHTML = result;
     // number1 = result.toString();
     // return result
+    if(operator === undefined){
+        clear();
+    } 
     let result = operate(operator,+number1, +number2);
     if(checkForInfinity(result) === true){
        
-        result = number1;
+        result = "error";
     }
     let resultString = result.toString();
     if(resultString.length > 5){
@@ -100,6 +109,7 @@ function sum(){
         checkedResult = shortenedResult
         result = checkedResult;
         }
+        
         console.log(number1)
         console.log(number2)
         console.log(result)
@@ -107,6 +117,11 @@ function sum(){
     number1 = result.toString();
     number2 = null;
     
+    console.log("EQUALS ENDED")
+    console.log("this is number1: " + number1);
+console.log("this is number2: " + number2);
+console.log("this is operator: " + operator);
+console.log("this is storage: " + storage);
     return result
     
 }
@@ -116,7 +131,7 @@ function sumContinued(){
     let result = operate(operator,+number1, +number2);
     if(checkForInfinity(result) === true){
        
-        result = number1;
+        result = "error";
     }
     let resultString = result.toString();
     if(resultString.length > 5){
@@ -160,37 +175,8 @@ function resetDotsCount(){
    
 }
 
-function undoNumber(e){
-    
-    
-    storage.pop();
-    
-    
-    displayCalc.innerHTML = storage.join("");
-}
-
-
-
-
-
-document.querySelectorAll(".buttonNumber").forEach(item => {
-    console.log("hello")
-    item.addEventListener("click", display);
-})
-
-plusBtn.addEventListener("click", function(){
-    if(number1 === undefined){
-        clear();
-    }else {
-        resetDotsCount();
-        checkIfContinuedOperations();
-        storage = []
-        operator = add;
-    }
-   
-})
-
-minusBtn.addEventListener("click", function(){
+/* OPERATION FUNCTIONS */
+function minusFunc(){
     if(number1 === undefined){
         clear();
     }else {
@@ -199,10 +185,20 @@ minusBtn.addEventListener("click", function(){
         storage = [];
         operator = sub;
     }
-    
-})
+}
 
-divideBtn.addEventListener("click", function(){
+function plusFunc(){
+    if(number1 === undefined){
+        clear();
+    }
+    else {
+        resetDotsCount();
+        checkIfContinuedOperations();
+        storage = []
+        operator = add;
+    }
+}
+function divideFunc() {
     if(number1 === undefined){
         clear();
     }else {
@@ -211,10 +207,9 @@ divideBtn.addEventListener("click", function(){
         storage = [];
         operator = divide;
     }
-    
-})
+}
 
-multiplyBtn.addEventListener("click", function(){
+function multiplyFunc(){
     if(number1 === undefined){
         clear();
     }else {
@@ -223,10 +218,9 @@ multiplyBtn.addEventListener("click", function(){
         storage = [];
         operator = multiply;
     }
-   
-})
+}
 
-remainderBtn.addEventListener("click", function(){
+function remainderFunc(){
     if(number1 === undefined){
         clear();
     }else {
@@ -235,14 +229,30 @@ remainderBtn.addEventListener("click", function(){
         storage = [];
         operator = remainder;
     }
-   
+}
+
+
+
+document.querySelectorAll(".buttonNumber").forEach(item => {
+    item.addEventListener("click", display);
 })
+
+plusBtn.addEventListener("click", plusFunc);
+plusBtn.addEventListener("keyup", function(e){
+    console.log(e.type);
+})
+
+minusBtn.addEventListener("click", minusFunc);
+
+divideBtn.addEventListener("click", divideFunc);
+
+multiplyBtn.addEventListener("click", multiplyFunc);
+
+remainderBtn.addEventListener("click", remainderFunc);
 
 
 
 clearBtn.addEventListener("click", clear)
-
-// delBtn.addEventListener("click", undoNumber);
 
 equalBtn.addEventListener("click", sum)
 
